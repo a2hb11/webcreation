@@ -51,6 +51,17 @@ describe('estimateRange', () => {
     ).toEqual({ from: 160, to: 320 })
   })
 
+  it('applies percent factors on the base range regardless of order', () => {
+    const withRush: PriceFactor[] = [
+      ...factors,
+      { slug: 'rush', deltaFromKwd: 25, deltaToKwd: 50, pricingMode: 'percent' },
+    ]
+    const a = estimateRange({ from: 400, to: 1000 }, withRush, [{ slug: 'rush' }, { slug: 'arabic' }])
+    const b = estimateRange({ from: 400, to: 1000 }, withRush, [{ slug: 'arabic' }, { slug: 'rush' }])
+    expect(a).toEqual({ from: 560, to: 1620 })
+    expect(b).toEqual(a)
+  })
+
   it('never returns to < from', () => {
     const weird: PriceFactor[] = [
       { slug: 'odd', deltaFromKwd: 100, deltaToKwd: 0, pricingMode: 'flat' },
@@ -86,6 +97,7 @@ describe('formatting', () => {
     expect(formatMoney(980, USD, 'en')).toBe('$980')
     expect(formatMoney(300, KWD, 'en')).toBe('KD 300')
     expect(formatMoney(300, KWD, 'ar')).toBe('300 KD')
+    expect(formatMoney(300, { ...KWD, symbolAr: 'د.ك' }, 'ar')).toBe('300 د.ك')
   })
 
   it('formats ranges for English and Arabic', () => {

@@ -46,13 +46,13 @@ export type Database = {
                   ]
                 },"currencies": {
                   Row: {
-                    "code": string,"decimals": number,"enabled": boolean,"is_default": boolean,"name_ar": string,"name_en": string,"rate_per_kwd": number,"rounding": number,"sort_order": number,"symbol": string,"updated_at": string
+                    "code": string,"decimals": number,"enabled": boolean,"is_default": boolean,"name_ar": string,"name_en": string,"rate_per_kwd": number,"rounding": number,"sort_order": number,"symbol": string,"symbol_ar": string,"updated_at": string
                   }
                   Insert: {
-                    "code": string,"decimals"?: number,"enabled"?: boolean,"is_default"?: boolean,"name_ar": string,"name_en": string,"rate_per_kwd": number,"rounding"?: number,"sort_order"?: number,"symbol": string,"updated_at"?: string
+                    "code": string,"decimals"?: number,"enabled"?: boolean,"is_default"?: boolean,"name_ar": string,"name_en": string,"rate_per_kwd": number,"rounding"?: number,"sort_order"?: number,"symbol": string,"symbol_ar"?: string,"updated_at"?: string
                   }
                   Update: {
-                    "code"?: string,"decimals"?: number,"enabled"?: boolean,"is_default"?: boolean,"name_ar"?: string,"name_en"?: string,"rate_per_kwd"?: number,"rounding"?: number,"sort_order"?: number,"symbol"?: string,"updated_at"?: string
+                    "code"?: string,"decimals"?: number,"enabled"?: boolean,"is_default"?: boolean,"name_ar"?: string,"name_en"?: string,"rate_per_kwd"?: number,"rounding"?: number,"sort_order"?: number,"symbol"?: string,"symbol_ar"?: string,"updated_at"?: string
                   }
                   Relationships: [
                     

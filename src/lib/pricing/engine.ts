@@ -6,13 +6,15 @@ export type PriceRange = { from: number; to: number }
 export type CurrencyRate = {
   code: string
   symbol: string
+  /** Symbol shown in the Arabic UI; falls back to `symbol`. */
+  symbolAr?: string
   ratePerKwd: number
   /** Round converted amounts to the nearest multiple of this (e.g. 5 for USD). */
   rounding: number
   decimals: number
 }
 
-export type PricingMode = 'flat' | 'per_unit'
+export type PricingMode = 'flat' | 'per_unit' | 'percent'
 
 export type PriceFactor = {
   slug: string
@@ -45,6 +47,12 @@ export function estimateRange(
     const factor = bySlug.get(selection.slug)
     if (!factor || seen.has(factor.slug)) continue
     seen.add(factor.slug)
+    if (factor.pricingMode === 'percent') {
+      // Percent of the *base* range so the order of selections never matters.
+      from += (base.from * factor.deltaFromKwd) / 100
+      to += (base.to * factor.deltaToKwd) / 100
+      continue
+    }
     const multiplier = factor.pricingMode === 'per_unit' ? clampUnits(factor, selection.units) : 1
     from += factor.deltaFromKwd * multiplier
     to += factor.deltaToKwd * multiplier
@@ -83,7 +91,7 @@ const formatNumber = (amount: number, currency: CurrencyRate, locale: string) =>
 const isSign = (symbol: string) => symbol.length === 1 && !/\p{L}/u.test(symbol)
 
 function withSymbol(text: string, currency: CurrencyRate, locale: string) {
-  if (locale === 'ar') return `${text} ${currency.symbol}`
+  if (locale === 'ar') return `${text} ${currency.symbolAr || currency.symbol}`
   return isSign(currency.symbol) ? `${currency.symbol}${text}` : `${currency.symbol} ${text}`
 }
 

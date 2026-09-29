@@ -129,7 +129,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
           slug: f.slug,
           deltaFromKwd: Number(f.delta_from_kwd),
           deltaToKwd: Number(f.delta_to_kwd),
-          pricingMode: f.pricing_mode === 'per_unit' ? 'per_unit' : 'flat',
+          pricingMode: f.pricing_mode as PriceFactor['pricingMode'],
           maxUnits: f.max_units,
         }))
       estimate = estimateRange(

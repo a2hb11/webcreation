@@ -198,8 +198,9 @@ create table public.price_factors (
   example_ar     text not null default '',
   delta_from_kwd numeric(10, 3) not null default 0 check (delta_from_kwd >= 0),
   delta_to_kwd   numeric(10, 3) not null default 0 check (delta_to_kwd >= delta_from_kwd),
-  -- 'flat' adds delta once; 'per_unit' multiplies by a quantity (e.g. pages).
-  pricing_mode   text not null default 'flat' check (pricing_mode in ('flat', 'per_unit')),
+  -- 'flat' adds delta once; 'per_unit' multiplies by a quantity (e.g. pages);
+  -- 'percent' adds delta_from/to % of the base range (e.g. rush delivery).
+  pricing_mode   text not null default 'flat' check (pricing_mode in ('flat', 'per_unit', 'percent')),
   unit_label_en  text,
   unit_label_ar  text,
   max_units      integer check (max_units is null or max_units > 0),
@@ -232,6 +233,7 @@ create table public.currencies (
   name_en      text not null,
   name_ar      text not null,
   symbol       text not null,
+  symbol_ar    text not null default '',
   rate_per_kwd numeric(14, 6) not null check (rate_per_kwd > 0),
   rounding     numeric(10, 3) not null default 1 check (rounding > 0),
   decimals     smallint not null default 0 check (decimals between 0 and 3),
