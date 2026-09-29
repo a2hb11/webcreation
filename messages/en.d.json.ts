@@ -3,8 +3,8 @@
 
 declare const messages: {
   "Meta": {
-    "brand": "Studio",
-    "title": "Studio — Websites for ambitious businesses in Kuwait",
+    "brand": "Noxaur",
+    "title": "Noxaur — Websites for ambitious businesses in Kuwait",
     "description": "Premium websites, online stores and web apps designed and built in Kuwait."
   },
   "Home": {
