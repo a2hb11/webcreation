@@ -1,26 +1,114 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Theme is chosen per request from the `theme` cookie (no inline script,
+   no flash) and applied as data-theme on <html>. Dark is the default. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant rtl (&:where([dir='rtl'], [dir='rtl'] *));
+
+@theme {
+  --font-display: var(--font-display-latin), 'Times New Roman', serif;
+  --font-sans: var(--font-body-latin), system-ui, sans-serif;
+  --font-display-ar: var(--font-display-arabic), var(--font-display-latin), serif;
+  --font-sans-ar: var(--font-body-arabic), var(--font-body-latin), system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-pressed: var(--gold-pressed);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-text: var(--gold-text);
+  --color-success: var(--success);
+  --color-error: var(--error);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0a08;
+  --bg-elevated: #131210;
+  --surface: #1a1916;
+  --surface-hover: #22201c;
+  --border: #2a2823;
+  --border-strong: #3d3a32;
+  --fg: #f4efe6;
+  --fg-muted: #a8a196;
+  --fg-subtle: #6f695f;
+  --gold: #c9a96a;
+  --gold-hover: #d9bc80;
+  --gold-pressed: #b8955a;
+  --gold-soft: rgb(201 169 106 / 0.12);
+  --gold-text: #d4b476;
+  --success: #6fcf97;
+  --error: #f28b82;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #fbf8f2;
+  --bg-elevated: #ffffff;
+  --surface: #f3eee4;
+  --surface-hover: #ece6da;
+  --border: #e4ddd0;
+  --border-strong: #cfc6b5;
+  --fg: #1a1815;
+  --fg-muted: #5f594f;
+  --fg-subtle: #8a8376;
+  --gold: #b08a45;
+  --gold-hover: #9a7a3e;
+  --gold-pressed: #86692f;
+  --gold-soft: rgb(176 138 69 / 0.14);
+  --gold-text: #7e6230;
+  --success: #2e7d4f;
+  --error: #b3261e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  [dir='rtl'] body {
+    font-family: var(--font-sans-ar);
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--bg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility font-display {
+  font-family: var(--font-display);
+  [dir='rtl'] & {
+    font-family: var(--font-display-ar);
+  }
 }
