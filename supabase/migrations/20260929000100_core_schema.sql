@@ -247,7 +247,7 @@ create unique index currencies_single_default_idx on public.currencies (is_defau
 
 create table public.faqs (
   id          uuid primary key default gen_random_uuid(),
-  question_en text not null,
+  question_en text not null unique,
   question_ar text not null,
   answer_en   text not null,
   answer_ar   text not null,

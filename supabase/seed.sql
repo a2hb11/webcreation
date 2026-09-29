@@ -261,6 +261,8 @@ insert into public.faqs (question_en, question_ar, answer_en, answer_ar, sort_or
   ('Do you work with clients outside Kuwait?', 'هل تعمل مع عملاء خارج الكويت؟',
    'Yes, across the Gulf. Everything happens over WhatsApp and video calls, and prices can be viewed in your currency.',
    'نعم، في جميع دول الخليج. كل شيء يتم عبر واتساب ومكالمات الفيديو، ويمكنك عرض الأسعار بعملتك.', 90)
-on conflict do nothing;
+on conflict (question_en) do update set
+  question_ar = excluded.question_ar, answer_en = excluded.answer_en,
+  answer_ar = excluded.answer_ar, sort_order = excluded.sort_order;
 
 commit;
