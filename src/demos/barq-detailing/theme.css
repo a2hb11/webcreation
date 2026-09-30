@@ -1,0 +1,18 @@
+[data-demo='barq-detailing'] {
+  --demo-bg: #0b0d10;
+  --demo-surface: #14171c;
+  --demo-fg: #f2f4f7;
+  --demo-muted: #98a2b3;
+  --demo-accent: #22d3ee;
+  --demo-accent-2: #ffffff;
+  --demo-line: #262b33;
+  --demo-on-accent: #04141a;
+  --demo-radius: 6px;
+  --demo-font-display: var(--font-unbounded), sans-serif;
+  --demo-font-body: var(--font-space-grotesk), sans-serif;
+  color-scheme: dark;
+}
+[dir='rtl'] [data-demo='barq-detailing'] {
+  --demo-font-display: var(--font-changa), sans-serif;
+  --demo-font-body: var(--font-changa), sans-serif;
+}

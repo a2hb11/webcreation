@@ -1,0 +1,18 @@
+[data-demo='sahwa-roasters'] {
+  --demo-bg: #f7f1e8;
+  --demo-surface: #fffbf5;
+  --demo-fg: #231f1b;
+  --demo-muted: #7a6f66;
+  --demo-accent: #c8552a;
+  --demo-accent-2: #5b6b3a;
+  --demo-line: #e6dacb;
+  --demo-on-accent: #fff8f2;
+  --demo-radius: 12px;
+  --demo-font-display: var(--font-fraunces), serif;
+  --demo-font-body: var(--font-dm-sans), sans-serif;
+  color-scheme: light;
+}
+[dir='rtl'] [data-demo='sahwa-roasters'] {
+  --demo-font-display: var(--font-el-messiri), serif;
+  --demo-font-body: var(--font-el-messiri), sans-serif;
+}
