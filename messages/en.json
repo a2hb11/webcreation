@@ -130,5 +130,189 @@
         "elite": "Elite"
       }
     }
+  },
+  "WorkPage": {
+    "eyebrow": "Work",
+    "title": "Projects, by category.",
+    "lead": "Concept projects show the standard you can expect; client work is added as it launches.",
+    "all": "All",
+    "category": "Category",
+    "tier": "Level",
+    "emptyTitle": "Nothing here yet — tell us what you need.",
+    "emptyLead": "The first project in this category could be yours.",
+    "emptyCta": "Start a project"
+  },
+  "ProjectPage": {
+    "duration": "{days} days",
+    "similar": "Get a site like this",
+    "story": "The brief and the build",
+    "included": "What's included"
+  },
+  "PricingPage": {
+    "eyebrow": "Pricing",
+    "title": "Clear ranges. Fixed quotes.",
+    "lead": "Every category has three levels. Pick one, see what raises the price, and estimate your project before we talk.",
+    "typical": "Typical website",
+    "note": "Ranges are in your selected currency for reference; quotes are issued in KWD, 50% to start and 50% at launch.",
+    "compareEyebrow": "Compare",
+    "compareTitle": "What changes between levels.",
+    "compareLead": "The short version. Every package lists its exact inclusions.",
+    "compare": {
+      "row": "",
+      "pages": {
+        "label": "Pages",
+        "starter": "Up to 5",
+        "professional": "Up to 8–12",
+        "elite": "As many as the brief needs"
+      },
+      "design": {
+        "label": "Design",
+        "starter": "Curated layout, styled to your brand",
+        "professional": "Custom design",
+        "elite": "Bespoke design + motion"
+      },
+      "languages": {
+        "label": "Languages",
+        "starter": "Arabic or English",
+        "professional": "Arabic + English (RTL)",
+        "elite": "Arabic + English + copywriting"
+      },
+      "admin": {
+        "label": "Admin panel",
+        "starter": "—",
+        "professional": "Edit content yourself",
+        "elite": "Full CMS"
+      },
+      "payments": {
+        "label": "Payments",
+        "starter": "Add-on",
+        "professional": "KNET + cards (one gateway)",
+        "elite": "Multiple gateways, Apple Pay"
+      },
+      "motion": {
+        "label": "Animations",
+        "starter": "Subtle",
+        "professional": "Stripe-style transitions",
+        "elite": "Scroll storytelling"
+      },
+      "seo": {
+        "label": "SEO",
+        "starter": "Basics",
+        "professional": "On-page + schema",
+        "elite": "Technical + performance"
+      },
+      "copy": {
+        "label": "Copywriting",
+        "starter": "Add-on",
+        "professional": "Add-on",
+        "elite": "Included"
+      },
+      "support": {
+        "label": "Post-launch fixes",
+        "starter": "30 days",
+        "professional": "30 days + 1 month Growth Care",
+        "elite": "30 days + 1 month Growth Care"
+      },
+      "delivery": {
+        "label": "Delivery",
+        "starter": "1–2 weeks",
+        "professional": "3–6 weeks",
+        "elite": "6–12 weeks"
+      }
+    },
+    "factorsEyebrow": "What raises the price",
+    "factorsTitle": "Every extra, priced in the open.",
+    "factorsLead": "Each one is listed with a typical range and a real example.",
+    "example": "Example:",
+    "calcEyebrow": "Calculator",
+    "calcTitle": "Estimate your project.",
+    "calcLead": "Pick the category and level, switch on the extras you need, and send the estimate straight to WhatsApp.",
+    "calc": {
+      "category": "1. What are we building?",
+      "tier": "2. Which level?",
+      "extras": "3. Extras",
+      "estimate": "Estimated range",
+      "disclaimer": "An estimate, not a quote. You receive a fixed price within 24 hours after a short brief.",
+      "whatsapp": "Send this estimate on WhatsApp",
+      "form": "Send it through the form",
+      "units": "Quantity",
+      "summary": "Estimate from noxaur.com",
+      "none": "No extras"
+    },
+    "careEyebrow": "After launch",
+    "careTitle": "Care plans.",
+    "careLead": "Hosting, updates, monitoring and monthly edits so the site keeps earning its keep.",
+    "perMonth": "/ month",
+    "carePick": "Ask about this plan"
+  },
+  "ServicesPage": {
+    "eyebrow": "Services",
+    "title": "What we build, and what it usually costs.",
+    "lead": "Seven categories, each with three levels. Below: what's included, a typical range, and concept projects that show the finish.",
+    "jump": "Jump to a category",
+    "typical": "Typical range",
+    "cta": "Start a project",
+    "pricing": "See tiers"
+  },
+  "AboutPage": {
+    "eyebrow": "The studio",
+    "title": "About Noxaur",
+    "statement": "Noxaur is a Kuwait web studio that builds websites the way good products are built: a fixed scope, one accountable developer, and a finish that makes a business look established.",
+    "lead": "We work with owners of small and growing businesses across Kuwait and the Gulf — restaurants, clinics, boutiques, studios and services — who want a site that earns trust in the first three seconds.",
+    "howEyebrow": "How we work",
+    "howTitle": "Four promises.",
+    "principles": {
+      "fixed": {
+        "title": "Fixed price before work starts",
+        "body": "You approve a written scope and price. Changes are quoted before they're built, never billed by surprise."
+      },
+      "contact": {
+        "title": "One point of contact",
+        "body": "The person you brief is the person who designs, builds and launches. No hand-offs, no account managers."
+      },
+      "bilingual": {
+        "title": "Bilingual by default",
+        "body": "Arabic and English are designed together, with proper right-to-left layouts and typography — not a translated afterthought."
+      },
+      "own": {
+        "title": "You own everything",
+        "body": "Domain, code, content and every login are yours at launch. No lock-in, no hostage hosting."
+      }
+    },
+    "stackEyebrow": "Stack",
+    "stackTitle": "Tools we trust.",
+    "stackLead": "Modern, well-maintained and fast — chosen so your site stays secure and cheap to run for years.",
+    "whereEyebrow": "Where",
+    "whereTitle": "Kuwait City, working across the Gulf.",
+    "whereLead": "Meetings on WhatsApp or video; in-person in Kuwait when it helps."
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Tell us about the business.",
+    "lead": "A few lines are enough. You get a reply within a working day and a fixed quote within 24 hours of a short brief.",
+    "whatsappTitle": "WhatsApp",
+    "whatsappBody": "Fastest way to reach us. Tap to open a chat.",
+    "hoursTitle": "Hours",
+    "terms": "Payment terms:",
+    "form": {
+      "name": "Your name",
+      "company": "Business name",
+      "phone": "Phone / WhatsApp",
+      "email": "Email",
+      "category": "What do you need?",
+      "tier": "Level",
+      "message": "Tell us about the project",
+      "submit": "Send request",
+      "sending": "Sending…",
+      "successTitle": "Received. Thank you.",
+      "successBody": "We reply within a working day, Sat–Thu 4–11 pm. For anything urgent, WhatsApp is fastest.",
+      "contactRequired": "Please add a phone number or an email so we can reply.",
+      "invalid": "Please check the highlighted fields.",
+      "captcha": "The security check did not pass. Please try again.",
+      "rateLimited": "Too many requests from this connection. Please try again in an hour or message us on WhatsApp.",
+      "server": "Something went wrong on our side. Please try again or message us on WhatsApp.",
+      "none": "Not sure yet",
+      "messagePlaceholder": "I'm interested in a care plan"
+    }
   }
 }
