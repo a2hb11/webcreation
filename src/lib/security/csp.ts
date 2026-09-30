@@ -29,11 +29,13 @@ export function buildCsp({ nonce, supabaseUrl, isDev }: CspOptions): string {
       'https://challenges.cloudflare.com',
       ...(isDev ? ["'unsafe-eval'"] : []),
     ],
-    // Styles: in production only nonce'd <style> tags and self-hosted CSS.
-    // Motion/Framer set inline `style=""` attributes, which CSP does not
-    // govern (only <style> elements and javascript: URLs are), so this stays
-    // strict without breaking animations.
-    'style-src': ["'self'", isDev ? "'unsafe-inline'" : `'nonce-${nonce}'`],
+    // Styles: <style> elements need the nonce (or come from our own CSS);
+    // style *attributes* are allowed because React/Motion server-render
+    // initial states as style="" and CSS injection is not a script risk.
+    // The plain style-src is the fallback for browsers without -elem/-attr.
+    'style-src': ["'self'", "'unsafe-inline'"],
+    'style-src-elem': ["'self'", isDev ? "'unsafe-inline'" : `'nonce-${nonce}'`],
+    'style-src-attr': ["'unsafe-inline'"],
     'img-src': ["'self'", 'blob:', 'data:', supabaseOrigin],
     'font-src': ["'self'"],
     'connect-src': ["'self'", supabaseOrigin, supabaseWs, 'https://challenges.cloudflare.com'],

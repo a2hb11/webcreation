@@ -342,3 +342,31 @@
   from { stroke-dashoffset: 1; }
   to { stroke-dashoffset: 0; }
 }
+
+/* Concept demos: generic tokens, filled per demo in its theme.css so no
+   inline style attributes are needed under the strict CSP. */
+@theme inline {
+  --color-demo-bg: var(--demo-bg);
+  --color-demo-surface: var(--demo-surface);
+  --color-demo-fg: var(--demo-fg);
+  --color-demo-muted: var(--demo-muted);
+  --color-demo-accent: var(--demo-accent);
+  --color-demo-accent-2: var(--demo-accent-2);
+  --color-demo-line: var(--demo-line);
+  --color-demo-on-accent: var(--demo-on-accent);
+  --font-demo-display: var(--demo-font-display);
+  --font-demo-body: var(--demo-font-body);
+  --radius-demo: var(--demo-radius);
+}
+[data-demo] {
+  font-family: var(--demo-font-body);
+  background: var(--demo-bg);
+  color: var(--demo-fg);
+}
+[data-demo] ::selection {
+  background: var(--demo-accent);
+  color: var(--demo-on-accent);
+}
+[dir='rtl'] [data-demo] {
+  letter-spacing: 0;
+}

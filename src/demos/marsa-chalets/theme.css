@@ -1,0 +1,18 @@
+[data-demo='marsa-chalets'] {
+  --demo-bg: #f4f7f8;
+  --demo-surface: #ffffff;
+  --demo-fg: #14252e;
+  --demo-muted: #5f7480;
+  --demo-accent: #0f7c8c;
+  --demo-accent-2: #f2a24b;
+  --demo-line: #dbe4e8;
+  --demo-on-accent: #f4fbfc;
+  --demo-radius: 16px;
+  --demo-font-display: var(--font-lora), serif;
+  --demo-font-body: var(--font-nunito), sans-serif;
+  color-scheme: light;
+}
+[dir='rtl'] [data-demo='marsa-chalets'] {
+  --demo-font-display: var(--font-almarai), sans-serif;
+  --demo-font-body: var(--font-almarai), sans-serif;
+}

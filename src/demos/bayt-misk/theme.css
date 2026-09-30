@@ -1,0 +1,18 @@
+[data-demo='bayt-misk'] {
+  --demo-bg: #0e0b09;
+  --demo-surface: #1a1410;
+  --demo-fg: #f3ebdf;
+  --demo-muted: #a89b8b;
+  --demo-accent: #b8863b;
+  --demo-accent-2: #5e2a2a;
+  --demo-line: #2c231c;
+  --demo-on-accent: #150f0a;
+  --demo-radius: 2px;
+  --demo-font-display: var(--font-marcellus), serif;
+  --demo-font-body: var(--font-karla), sans-serif;
+  color-scheme: dark;
+}
+[dir='rtl'] [data-demo='bayt-misk'] {
+  --demo-font-display: var(--font-reem-kufi), sans-serif;
+  --demo-font-body: var(--font-reem-kufi), sans-serif;
+}
