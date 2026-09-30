@@ -23,6 +23,10 @@ type Opts<S extends z.ZodType> = {
   before?: (data: z.infer<S>, supabase: SupabaseLike) => Promise<string | null>
   /** Maps a duplicate-key error to a friendlier message. */
   uniqueMessage?: string
+  /** Fields that are validation-only and must not be written. */
+  omit?: string[]
+  /** For tables whose id is user-supplied (e.g. currency code): decides insert vs update. */
+  isUpdate?: (data: z.infer<S>) => boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,9 +39,12 @@ export function makeSave<S extends z.ZodType>(opts: Opts<S>) {
   return async (input: unknown): Promise<ActionState> =>
     runAdminAction(opts.schema, input, async (data, { supabase }) => {
       const record = data as Record<string, unknown>
-      const id = record[idColumn] as string | undefined
+      const key = record[idColumn] as string | undefined
+      const updating = opts.isUpdate ? opts.isUpdate(data) : Boolean(key)
+      const id = updating ? key : undefined
       const values = { ...record }
       if (idColumn === 'id') delete values.id
+      for (const k of opts.omit ?? []) delete values[k]
       if (opts.before) {
         const problem = await opts.before(data, supabase)
         if (problem) return { status: 'error', message: problem }
