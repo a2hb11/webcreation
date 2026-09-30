@@ -16,6 +16,34 @@ declare const messages: {
     "title": "This page does not exist",
     "body": "The link may be outdated or mistyped.",
     "backHome": "Back to the homepage"
+  },
+  "Nav": {
+    "home": "Home",
+    "work": "Work",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "currency": "Currency",
+    "toggleTheme": "Switch theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Footer": {
+    "tagline": "A web studio in Kuwait building websites, stores and web apps that make businesses look established.",
+    "work": "Work",
+    "studio": "Studio",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "whatsapp": "WhatsApp",
+    "whatsappText": "Hello Noxaur, I'd like to talk about a website.",
+    "openNow": "Open now",
+    "closedNow": "Closed now",
+    "rights": "All rights reserved.",
+    "madeIn": "Designed and built in Kuwait."
   }
 };
 export default messages;

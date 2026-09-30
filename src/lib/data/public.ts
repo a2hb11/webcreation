@@ -46,12 +46,24 @@ function anon() {
   })
 }
 
+// Reads are cached and, if the database is unreachable, fall back to an
+// empty result so the marketing site still renders (with a logged error)
+// instead of failing the whole page. Failures are not cached.
 function cached<Args extends unknown[], R>(
   key: string,
   tags: string[],
   fn: (...args: Args) => Promise<R>,
+  fallback: R,
 ) {
-  return unstable_cache(fn, [key], { tags, revalidate: REVALIDATE_SECONDS })
+  const inner = unstable_cache(fn, [key], { tags, revalidate: REVALIDATE_SECONDS })
+  return async (...args: Args): Promise<R> => {
+    try {
+      return await inner(...args)
+    } catch (error) {
+      console.error(`[data] ${key} failed:`, error instanceof Error ? error.message : error)
+      return fallback
+    }
+  }
 }
 
 export const getCategories = cached('categories', [cacheTags.categories], async () => {
@@ -62,7 +74,7 @@ export const getCategories = cached('categories', [cacheTags.categories], async 
     .order('sort_order')
   if (error) throw error
   return data satisfies Category[]
-})
+}, [] as Category[])
 
 export type ProjectCard = Project & { category: Pick<Category, 'slug' | 'name_en' | 'name_ar'> }
 
@@ -78,6 +90,7 @@ export const getProjects = cached(
     if (error) throw error
     return data as ProjectCard[]
   },
+  [] as ProjectCard[],
 )
 
 export const getFeaturedProjects = cached(
@@ -94,6 +107,7 @@ export const getFeaturedProjects = cached(
     if (error) throw error
     return data as ProjectCard[]
   },
+  [] as ProjectCard[],
 )
 
 export type ProjectDetail = ProjectCard & { images: ProjectImage[] }
@@ -114,6 +128,7 @@ export const getProjectBySlug = cached(
     detail.images.sort((a, b) => a.sort_order - b.sort_order)
     return detail
   },
+  null as ProjectDetail | null,
 )
 
 export const getPackages = cached('packages', [cacheTags.packages], async () => {
@@ -124,7 +139,7 @@ export const getPackages = cached('packages', [cacheTags.packages], async () => 
     .order('sort_order')
   if (error) throw error
   return data satisfies Package[]
-})
+}, [] as Package[])
 
 /** Generic packages (no category) with per-category overrides applied. */
 export async function getPackagesForCategory(categoryId: string | null) {
@@ -150,7 +165,7 @@ export const getPriceFactors = cached('price_factors', [cacheTags.factors], asyn
     .order('sort_order')
   if (error) throw error
   return data satisfies PriceFactorRow[]
-})
+}, [] as PriceFactorRow[])
 
 export const getMaintenancePlans = cached('maintenance_plans', [cacheTags.maintenance], async () => {
   const { data, error } = await anon()
@@ -160,7 +175,7 @@ export const getMaintenancePlans = cached('maintenance_plans', [cacheTags.mainte
     .order('sort_order')
   if (error) throw error
   return data satisfies MaintenancePlan[]
-})
+}, [] as MaintenancePlan[])
 
 export const getCurrencies = cached('currencies', [cacheTags.currencies], async () => {
   const { data, error } = await anon()
@@ -170,7 +185,7 @@ export const getCurrencies = cached('currencies', [cacheTags.currencies], async 
     .order('sort_order')
   if (error) throw error
   return data satisfies Currency[]
-})
+}, [] as Currency[])
 
 export async function getDefaultCurrency() {
   const currencies = await getCurrencies()
@@ -181,7 +196,7 @@ export const getFaqs = cached('faqs', [cacheTags.faqs], async () => {
   const { data, error } = await anon().from('faqs').select('*').eq('published', true).order('sort_order')
   if (error) throw error
   return data satisfies Faq[]
-})
+}, [] as Faq[])
 
 export const getTestimonials = cached('testimonials', [cacheTags.testimonials], async () => {
   const { data, error } = await anon()
@@ -191,7 +206,7 @@ export const getTestimonials = cached('testimonials', [cacheTags.testimonials], 
     .order('sort_order')
   if (error) throw error
   return data satisfies Testimonial[]
-})
+}, [] as Testimonial[])
 
 export type PublicSettings = Record<string, unknown>
 
@@ -199,7 +214,7 @@ export const getPublicSettings = cached('site_settings', [cacheTags.settings], a
   const { data, error } = await anon().from('site_settings').select('key, value').eq('is_public', true)
   if (error) throw error
   return Object.fromEntries(data.map((row) => [row.key, row.value])) as PublicSettings
-})
+}, {} as PublicSettings)
 
 export async function getSetting<T = string>(key: string, fallback: T): Promise<T> {
   const settings = await getPublicSettings()

@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { fontVariables } from '@/app/fonts'
 import { isRtl, routing } from '@/i18n/routing'
+import { SiteProviders } from '@/components/site/providers'
 import '@/app/globals.css'
 
 type Props = {
@@ -36,7 +37,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body className="min-h-dvh antialiased">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteProviders>{children}</SiteProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
