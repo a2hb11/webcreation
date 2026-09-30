@@ -1,12 +1,25 @@
-import { getTranslations } from 'next-intl/server'
+import { Hero } from '@/components/home/hero'
+import { CategoryMarquee } from '@/components/home/marquee'
+import { ServicesBento } from '@/components/home/services-bento'
+import { Showcase } from '@/components/home/showcase'
+import { Steps } from '@/components/home/steps'
+import { Packages } from '@/components/home/packages'
+import { FactorsTeaser } from '@/components/home/factors-teaser'
+import { Faq } from '@/components/home/faq'
+import { CtaBand } from '@/components/home/cta-band'
 
-export default async function HomePage() {
-  const t = await getTranslations('Home')
+export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-6 px-6 text-center">
-      <p className="text-sm tracking-[0.3em] text-gold uppercase">{t('eyebrow')}</p>
-      <h1 className="font-display text-5xl leading-tight md:text-7xl">{t('headline')}</h1>
-      <p className="max-w-xl text-lg text-fg-muted">{t('subline')}</p>
-    </main>
+    <>
+      <Hero />
+      <CategoryMarquee />
+      <ServicesBento />
+      <Showcase />
+      <Steps />
+      <Packages />
+      <FactorsTeaser />
+      <Faq />
+      <CtaBand />
+    </>
   )
 }

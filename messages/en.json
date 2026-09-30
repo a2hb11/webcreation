@@ -5,9 +5,74 @@
     "description": "Premium websites, online stores and web apps designed and built in Kuwait."
   },
   "Home": {
-    "eyebrow": "Kuwait · Web studio",
-    "headline": "Websites that make your business look as serious as it is.",
-    "subline": "Portfolios, online stores, landing pages and web apps — designed, built and launched with care."
+    "hero": {
+      "eyebrow": "Web studio · Kuwait",
+      "line1": "Websites that make your",
+      "line2": "business look",
+      "accent": "established.",
+      "sub": "Landing pages, company sites, online stores and web apps for business owners in Kuwait and the Gulf — designed, built and launched by one senior developer.",
+      "primary": "Start a project",
+      "secondary": "See the work",
+      "note": "Replies Sat–Thu, 4–11 pm · WhatsApp"
+    },
+    "services": {
+      "eyebrow": "What we build",
+      "title": "Seven kinds of work, one standard.",
+      "lead": "Pick the shape that fits your business. Every category has a Starter, a Professional and an Elite level, so the price is always clear before we start.",
+      "from": "from {price}"
+    },
+    "showcase": {
+      "eyebrow": "Selected work",
+      "title": "Built to the standard you can expect.",
+      "lead": "Concept projects show the level of finish; client work is added here as it launches.",
+      "all": "View all work"
+    },
+    "steps": {
+      "eyebrow": "How it works",
+      "title": "From first message to launch, without surprises.",
+      "lead": "One point of contact, a fixed price before work starts, and a timeline you can plan around.",
+      "brief": {
+        "title": "Brief",
+        "body": "Tell us about the business on WhatsApp or through the form. Fifteen minutes is enough to understand what you need."
+      },
+      "quote": {
+        "title": "Fixed quote in 24 hours",
+        "body": "You get a written scope, a fixed price in KWD and a delivery date. Nothing starts until you approve it."
+      },
+      "build": {
+        "title": "Design and build",
+        "body": "Design first, then the build. Two rounds of design revisions and one on the final site are included."
+      },
+      "launch": {
+        "title": "Launch and 30 days of care",
+        "body": "We go live on your domain, hand over every login, and fix anything that comes up in the first month for free."
+      }
+    },
+    "packages": {
+      "eyebrow": "Three ways to start",
+      "title": "Choose a level, not a mystery.",
+      "lead": "Typical ranges for a business website. Every category has its own tiers on the pricing page.",
+      "note": "Prices are in your selected currency for reference; quotes are issued in KWD. 50% to start, 50% at launch.",
+      "compare": "See the full comparison"
+    },
+    "factors": {
+      "eyebrow": "What moves the price",
+      "title": "Every extra is priced in the open.",
+      "lead": "These are the things that push a project up a tier. Each one is listed with a typical range and an example.",
+      "example": "Example:",
+      "calculator": "Open the price calculator"
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Straight answers.",
+      "lead": "The things business owners ask before starting."
+    },
+    "cta": {
+      "title": "Let's build yours.",
+      "lead": "Send a message and get a fixed quote within 24 hours. No commitment.",
+      "whatsapp": "Message on WhatsApp",
+      "form": "Use the form"
+    }
   },
   "NotFound": {
     "title": "This page does not exist",
@@ -41,5 +106,29 @@
     "closedNow": "Closed now",
     "rights": "All rights reserved.",
     "madeIn": "Designed and built in Kuwait."
+  },
+  "Work": {
+    "card": {
+      "concept": "Concept demo",
+      "live": "Live",
+      "openDemo": "Open live demo",
+      "tier": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "elite": "Elite"
+      }
+    }
+  },
+  "Pricing": {
+    "card": {
+      "mostChosen": "Most chosen",
+      "delivery": "{min}–{max} days",
+      "quote": "Get a quote",
+      "tier": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "elite": "Elite"
+      }
+    }
   }
 }
