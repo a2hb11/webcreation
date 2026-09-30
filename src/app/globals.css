@@ -3,105 +3,222 @@
 /* Theme is chosen per request from the `theme` cookie (no inline script,
    no flash) and applied as data-theme on <html>. Dark is the default. */
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 @custom-variant rtl (&:where([dir='rtl'], [dir='rtl'] *));
+@custom-variant ltr (&:where([dir='ltr'], [dir='ltr'] *));
 
 @theme {
+  /* Fonts: --font-display / --font-body switch per language in :lang(ar). */
   --font-display: var(--font-display-latin), 'Times New Roman', serif;
   --font-sans: var(--font-body-latin), system-ui, sans-serif;
   --font-display-ar: var(--font-display-arabic), var(--font-display-latin), serif;
   --font-sans-ar: var(--font-body-arabic), var(--font-body-latin), system-ui, sans-serif;
 
-  --color-bg: var(--bg);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-  --color-fg: var(--fg);
-  --color-fg-muted: var(--fg-muted);
-  --color-fg-subtle: var(--fg-subtle);
-  --color-gold: var(--gold);
-  --color-gold-hover: var(--gold-hover);
-  --color-gold-pressed: var(--gold-pressed);
-  --color-gold-soft: var(--gold-soft);
-  --color-gold-text: var(--gold-text);
+  /* Full scale (public site) */
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border-1: var(--border-1);
+  --color-border-2: var(--border-2);
+  --color-border-gold: var(--border-gold);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-text-4: var(--text-4);
+  --color-gold-100: var(--gold-100);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-ink: var(--gold-ink);
   --color-success: var(--success);
   --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-btn-primary: var(--btn-primary-bg);
+  --color-btn-primary-fg: var(--btn-primary-fg);
+  --color-btn-primary-hover: var(--btn-primary-hover);
 
+  /* Semantic aliases (admin panel + shared components) */
+  --color-bg: var(--bg-0);
+  --color-bg-elevated: var(--bg-2);
+  --color-surface: var(--surface-1);
+  --color-surface-hover: var(--surface-2);
+  --color-border: var(--border-1);
+  --color-border-strong: var(--border-2);
+  --color-fg: var(--text-1);
+  --color-fg-muted: var(--text-2);
+  --color-fg-subtle: var(--text-3);
+  --color-gold: var(--gold-500);
+  --color-gold-hover: var(--gold-400);
+  --color-gold-pressed: var(--gold-600);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-text: var(--gold-text);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
+
+  /* Type scale (fluid) */
+  --text-display-xl: clamp(2.75rem, 2rem + 4vw, 5.5rem);
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+  --text-display-lg--line-height: 1.06;
+  --text-display-lg--letter-spacing: -0.015em;
+  --text-h2: clamp(1.875rem, 1.4rem + 1.8vw, 3rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.25;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.08em;
+
+  --container-site: 80rem;
+  --radius-card: 1rem;
 }
 
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #0b0a08;
-  --bg-elevated: #131210;
-  --surface: #1a1916;
-  --surface-hover: #22201c;
-  --border: #2a2823;
-  --border-strong: #3d3a32;
-  --fg: #f4efe6;
-  --fg-muted: #a8a196;
-  --fg-subtle: #6f695f;
-  --gold: #c9a96a;
-  --gold-hover: #d9bc80;
-  --gold-pressed: #b8955a;
-  --gold-soft: rgb(201 169 106 / 0.12);
-  --gold-text: #d4b476;
+  --bg-0: #070707;
+  --bg-1: #0b0b0c;
+  --bg-2: #111113;
+  --surface-1: #151517;
+  --surface-2: #1a1a1d;
+  --surface-3: #202024;
+  --border-1: #232326;
+  --border-2: #2c2c31;
+  --border-gold: #5c4a1e;
+  --text-1: #f5f2ea;
+  --text-2: #b8b4aa;
+  --text-3: #8a867d;
+  --text-4: #6b6862;
+  --gold-100: #f8efcf;
+  --gold-300: #f0d889;
+  --gold-400: #e2c35c;
+  --gold-500: #d4af37;
+  --gold-600: #b8962e;
+  --gold-700: #8f7322;
+  --gold-ink: #1a1406;
+  --gold-soft: rgb(212 175 55 / 0.12);
+  --gold-text: #e2c35c;
   --success: #6fcf97;
-  --error: #f28b82;
+  --error: #f27d7d;
+  --warning: #f2c46f;
+  --info: #7fb7f2;
+  --overlay: rgb(7 7 7 / 0.72);
+  --btn-primary-bg: #d4af37;
+  --btn-primary-fg: #1a1406;
+  --btn-primary-hover: #e2c35c;
+  --dur-instant: 80ms;
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-moderate: 400ms;
+  --dur-slow: 600ms;
+  --dur-hero: 900ms;
+  --loop-gradient: 18s;
+  --loop-marquee: 45s;
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #fbf8f2;
-  --bg-elevated: #ffffff;
-  --surface: #f3eee4;
-  --surface-hover: #ece6da;
-  --border: #e4ddd0;
-  --border-strong: #cfc6b5;
-  --fg: #1a1815;
-  --fg-muted: #5f594f;
-  --fg-subtle: #8a8376;
-  --gold: #b08a45;
-  --gold-hover: #9a7a3e;
-  --gold-pressed: #86692f;
-  --gold-soft: rgb(176 138 69 / 0.14);
-  --gold-text: #7e6230;
-  --success: #2e7d4f;
-  --error: #b3261e;
+  --bg-0: #fbfaf7;
+  --bg-1: #f5f3ee;
+  --bg-2: #f3f0e9;
+  --surface-1: #ffffff;
+  --surface-2: #f0ede5;
+  --surface-3: #e9e5da;
+  --border-1: #e4e0d5;
+  --border-2: #d2cdbf;
+  --border-gold: #d6be6a;
+  --text-1: #141210;
+  --text-2: #3f3b34;
+  --text-3: #625d53;
+  --text-4: #8f8a7f;
+  --gold-100: #f6eccb;
+  --gold-300: #d6be6a;
+  --gold-400: #c6961f;
+  --gold-500: #a67c1a;
+  --gold-600: #8a6613;
+  --gold-700: #6e510f;
+  --gold-ink: #1a1406;
+  --gold-soft: rgb(166 124 26 / 0.14);
+  --gold-text: #8a6613;
+  --success: #17693c;
+  --error: #b42323;
+  --warning: #7f5400;
+  --info: #1a5fb4;
+  --overlay: rgb(251 250 247 / 0.78);
+  /* Gold is never a fill under white text in light mode: primary is near-black. */
+  --btn-primary-bg: #141210;
+  --btn-primary-fg: #fbfaf7;
+  --btn-primary-hover: #2a2620;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
   body {
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--bg-0);
+    color: var(--text-1);
     font-family: var(--font-sans);
-    font-feature-settings: 'ss01', 'cv11';
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  :lang(ar) {
+    --font-display: var(--font-display-ar);
+    --font-sans: var(--font-sans-ar);
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    font-style: normal !important;
+    hyphens: none;
   }
   [dir='rtl'] body {
     font-family: var(--font-sans-ar);
   }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
   ::selection {
-    background: var(--gold);
-    color: var(--bg);
+    background: var(--gold-500);
+    color: var(--gold-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold-400);
+    outline-offset: 2px;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+      --dur-instant: 1ms;
+      --dur-fast: 1ms;
+      --dur-base: 1ms;
+      --dur-moderate: 1ms;
+      --dur-slow: 1ms;
+      --dur-hero: 1ms;
     }
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
+      animation-duration: 1ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      transition-duration: 1ms !important;
     }
   }
 }
@@ -111,4 +228,112 @@
   [dir='rtl'] & {
     font-family: var(--font-display-ar);
   }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility gold-gradient-text {
+  background: linear-gradient(105deg, var(--gold-300) 0%, var(--gold-500) 45%, var(--gold-700) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Hero "gold smoke": three drifting radial blobs + grain, CSS only. */
+@property --b1x { syntax: '<percentage>'; inherits: false; initial-value: 20%; }
+@property --b1y { syntax: '<percentage>'; inherits: false; initial-value: 30%; }
+@property --b2x { syntax: '<percentage>'; inherits: false; initial-value: 75%; }
+@property --b2y { syntax: '<percentage>'; inherits: false; initial-value: 65%; }
+@property --b3x { syntax: '<percentage>'; inherits: false; initial-value: 55%; }
+@property --b3y { syntax: '<percentage>'; inherits: false; initial-value: 15%; }
+
+@utility hero-gradient {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(40% 35% at var(--b1x) var(--b1y), rgb(212 175 55 / 0.34), transparent 70%),
+    radial-gradient(35% 45% at var(--b2x) var(--b2y), rgb(143 115 34 / 0.28), transparent 70%),
+    radial-gradient(45% 30% at var(--b3x) var(--b3y), rgb(240 216 137 / 0.12), transparent 70%),
+    var(--bg-0);
+  filter: blur(60px) saturate(1.1);
+  animation: drift var(--loop-gradient) ease-in-out infinite alternate;
+  [data-theme='light'] & {
+    opacity: 0.55;
+  }
+}
+
+@keyframes drift {
+  from { --b1x: 20%; --b1y: 30%; --b2x: 75%; --b2y: 65%; --b3x: 55%; --b3y: 15%; }
+  to   { --b1x: 35%; --b1y: 55%; --b2x: 60%; --b2y: 35%; --b3x: 80%; --b3y: 70%; }
+}
+
+@utility hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px;
+}
+
+@utility hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 40%, var(--bg-0) 100%);
+}
+
+/* Marquee: duplicated track, reversed in RTL, paused on hover/focus. */
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--loop-marquee) linear infinite;
+  [dir='rtl'] & {
+    animation-direction: reverse;
+  }
+  &:hover,
+  &:focus-within {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Skeleton shimmer */
+@utility shimmer {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgb(212 175 55 / 0.06), transparent);
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+@keyframes shimmer {
+  to { transform: translateX(100%); }
 }
